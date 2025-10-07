@@ -49,24 +49,24 @@ function generarReporte() {
 
     html += `<div class="titulo">CUADRE DE CAJA DIARIO</div>`;
     html += `<div class="linea"><div>Fecha:</div><div>${fecha}</div></div><hr>`;
-    html += `<div class="linea"><div>Total Venta:</div><div>${formatMoney(total)}</div></div>`;
+    html += `<div class="linea"><div>Total Venta General:</div><div>${formatMoney(total)}</div></div>`;
     html += `<div class="linea"><div>Propina:</div><div>${formatMoney(propina)}</div></div>`;
     html += `<div class="linea"><div>Domicilio:</div><div>${formatMoney(domicilio)}</div></div>`;
-    html += `<div class="linea"><div>Subtotal 1:</div><div>${formatMoney(subtotal1)}</div></div><hr>`;
+    html += `<div class="linea bold"><div>VENTA TOTAL DEL DIA:</div><div>${formatMoney(subtotal1)}</div></div><hr>`;
 
     for (let i = 0; i < 6; i++) {
         html += `<div class="linea"><div>Red ${i + 1}:</div><div>${formatMoney(red[i])}</div></div>`;
     }
 
-    html += `<div class="linea"><div>Subtotal 2:</div><div>${formatMoney(subtotal2)}</div></div><hr>`;
+    html += `<div class="linea"><div>Subtotal:</div><div>${formatMoney(subtotal2)}</div></div><hr>`;
     html += `<div class="linea"><div>Transferencias:</div><div>${formatMoney(transfer)}</div></div>`;
-    html += `<div class="linea"><div>Subtotal 3:</div><div>${formatMoney(subtotal3)}</div></div><hr>`;
+    html += `<div class="linea"><div>Subtotal:</div><div>${formatMoney(subtotal3)}</div></div><hr>`;
     html += `<div class="linea"><div>Cuentas x Cobrar:</div><div>${formatMoney(cxc)}</div></div>`;
-    html += `<div class="linea bold"><div>Subtotal 4:</div><div>${formatMoney(subtotal4)}</div></div><hr>`;
+    html += `<div class="linea bold"><div>EFECTIVO ENTREGADO:</div><div>${formatMoney(subtotal4)}</div></div><hr>`;
     html += `<div class="linea"><div>Gastos:</div><div>${formatMoney(gastos)}</div></div>`;
-    html += `<div class="linea"><div>Subtotal 5:</div><div>${formatMoney(subtotal5)}</div></div><hr>`;
+    html += `<div class="linea"><div>Subtotal:</div><div>${formatMoney(subtotal5)}</div></div><hr>`;
     html += `<div class="linea"><div>Efectivo Oficina:</div><div>${formatMoney(efectivo)}</div></div>`;
-    html += `<div class="linea"><div>Subtotal 6:</div><div>${formatMoney(subtotal6)}</div></div><hr>`;
+    html += `<div class="linea"><div>Subtotal:</div><div>${formatMoney(subtotal6)}</div></div><hr>`;
     html += `<div class="linea"><div>Propina:</div><div>${formatMoney(propina)}</div></div>`;
     html += `<div class="linea"><div>Domicilio:</div><div>${formatMoney(domicilio)}</div></div>`;
     html += `<div class="linea bold"><div>Efectivo en caja:</div><div>${formatMoney(verificacion)}</div></div>`;
@@ -76,7 +76,7 @@ function generarReporte() {
         html += `<div class="linea"><div>RED ${i + 1}:</div><div>${formatMoney(red[i])}</div></div>`;
     }
 
-    html += `<div class="linea"><div>SUBTOTAL RED:</div><div>${formatMoney(subtotalRed)}</div></div>`;
+    html += `<div class="linea bold"><div>SUBTOTAL RED:</div><div>${formatMoney(subtotalRed)}</div></div>`;
     html += `<div class="linea"><div>TRANSFERENCIAS:</div><div>${formatMoney(transfer)}</div></div>`;
     html += `<div class="linea"><div>SUBTOTAL DOCS:</div><div>${formatMoney(subtotalDocs)}</div></div>`;
     html += `<div class="linea"><div>CUENTA X COBRAR:</div><div>${formatMoney(cxc)}</div></div>`;
