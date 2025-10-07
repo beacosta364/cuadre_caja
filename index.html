@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadre de Caja Diario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🧾 ESTACION DE LA PAPA</h1>
+<form id="formCuadre">
+    <label>Fecha</label>
+    <input type="date" id="fecha" required>
+
+    <label>Total Venta</label>
+    <input type="number" id="total_venta" value="0" min="0">
+
+    <label>Propina</label>
+    <input type="number" id="propina" value="0" min="0">
+
+    <label>Domicilio</label>
+    <input type="number" id="domicilio" value="0" min="0">
+
+    <label>Red 1</label><input type="number" id="red1" value="0" min="0">
+    <label>Red 2</label><input type="number" id="red2" value="0" min="0">
+    <label>Red 3</label><input type="number" id="red3" value="0" min="0">
+    <label>Red 4</label><input type="number" id="red4" value="0" min="0">
+    <label>Red 5</label><input type="number" id="red5" value="0" min="0">
+    <label>Red 6</label><input type="number" id="red6" value="0" min="0">
+
+    <label>Transferencias</label>
+    <input type="number" id="transferencias" value="0" min="0">
+
+    <label>Cuenta por Cobrar</label>
+    <input type="number" id="cuenta_cobrar" value="0" min="0">
+
+    <label>Gastos</label>
+    <input type="number" id="gastos" value="0" min="0">
+
+    <label>Efectivo Oficina</label>
+    <input type="number" id="efectivo_oficina" value="0" min="0">
+
+    <button type="button" onclick="generarReporte()">Generar Reporte</button>
+</form>
+
+<div id="reporteCompleto" class="reporte">
+    <div class="ticket" id="ticketContent"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
