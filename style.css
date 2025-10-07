@@ -96,7 +96,7 @@ hr {
 }
 
 /* Impresión */
-@media print {
+/* @media print {
     @page {
         size: 80mm auto;
         margin: 0;
@@ -123,5 +123,65 @@ hr {
         margin: 0;
         width: 100%;
         padding: 8px;
+    }
+} */
+
+/* Impresión optimizada y centrada para impresoras térmicas */
+@media print {
+    @page {
+        size: 80mm auto;
+        margin: 2mm; /* margen mínimo para evitar recortes */
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: none;
+        text-align: center; /* centrado del contenedor */
+    }
+
+    form,
+    button {
+        display: none;
+    }
+
+    .reporte {
+        display: block;
+        margin: 0 auto; /* centrado horizontal */
+        width: 100%;
+        max-width: none;
+    }
+
+    .ticket {
+        display: inline-block; /* necesario para centrarlo correctamente */
+        background: #fff;
+        box-shadow: none;
+        border: none;
+        margin: 0 auto;
+        padding: 2mm 3mm;
+        width: 72mm; /* ancho real imprimible */
+        text-align: left; /* texto alineado a la izquierda dentro del bloque centrado */
+        font-size: 12px;
+        line-height: 1.2;
+        word-wrap: break-word;
+    }
+
+    .titulo {
+        text-align: center;
+        font-weight: bold;
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    .linea {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px dashed #000;
+        margin: 4px 0;
     }
 }
