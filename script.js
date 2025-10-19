@@ -1,5 +1,6 @@
 function val(id) {
-    return parseFloat(document.getElementById(id).value) || 0;
+    const raw = document.getElementById(id).value.replace(/\./g, "").replace(/[^0-9.-]/g, "");
+    return parseFloat(raw) || 0;
 }
 
 function formatMoney(n) {
@@ -17,6 +18,34 @@ function formatoFechaInput(fecha) {
     const dd = String(d.getDate()).padStart(2, '0');
     return `${yyyy}-${mm}-${dd}`;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const camposNumericos = document.querySelectorAll(
+        "#formCuadre input[type='number']"
+    );
+
+    camposNumericos.forEach(input => {
+        input.type = "text";
+        input.inputMode = "numeric";
+
+        input.addEventListener("input", e => {
+            const pos = e.target.selectionStart;
+            const longitudAntes = e.target.value.length;
+
+            let valor = e.target.value.replace(/\D/g, "");
+
+            if (valor) {
+                e.target.value = Number(valor).toLocaleString("es-CO");
+            } else {
+                e.target.value = "";
+            }
+
+            const longitudDespues = e.target.value.length;
+            e.target.selectionEnd = pos + (longitudDespues - longitudAntes);
+        });
+    });
+});
+
 
 function generarReporte() {
     const fechaInput = document.getElementById('fecha').value;
