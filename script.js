@@ -62,6 +62,7 @@ function generarReporte() {
     const cxc = val('cuenta_cobrar');
     const gastos = val('gastos');
     const efectivo = val('efectivo_oficina');
+    const baseCaja = val('base_caja');
 
     const subtotal1 = total - propina - domicilio;
     const subtotalRed = red.reduce((a, b) => a + b, 0);
@@ -73,6 +74,10 @@ function generarReporte() {
     const verificacion = subtotal6 + propina + domicilio;
     const subtotalDocs = subtotalRed + transfer;
     const totalDocs = subtotalDocs + cxc;
+
+    //Cierre de Caja
+    const cierreCaja = domicilio + subtotal4 + transfer + cxc + baseCaja;
+    const cierreCajaDividido = cierreCaja / 50000;
 
     let html = '';
 
@@ -120,6 +125,19 @@ function generarReporte() {
     html += `<div class="linea"><div>Propina:</div><div>${formatMoney(propina)}</div></div><br>`;
     html += `<div class="linea"><div>Repique:</div><div>__________</div></div><hr>`;
     html += `<div style="text-align:center; font-size:12px; margin-top:6px;">-- FIN DEL REPORTE --</div>`;
+
+    html += `<div class="linea"><div>Repique:</div><div>__________</div></div> <br> <hr>`;
+    //CIERRE DE CAJA
+    html += `<br><br><div style="text-align:center; font-weight:bold; font-size:13px;">CIERRE DE CAJA DEL DÍA</div><hr>`;
+    html += `<div class="linea"><div>Domicilios:</div><div>${formatMoney(domicilio)}</div></div>`;
+    html += `<div class="linea"><div>Efectivo Entregado:</div><div>${formatMoney(subtotal4)}</div></div>`;
+    html += `<div class="linea"><div>Transferencias:</div><div>${formatMoney(transfer)}</div></div>`;
+    html += `<div class="linea"><div>Cuentas x Cobrar:</div><div>${formatMoney(cxc)}</div></div>`;
+    html += `<div class="linea"><div>Base de Caja:</div><div>${formatMoney(baseCaja)}</div></div><hr>`;
+    html += `<div class="linea bold"><div>TOTAL CIERRE DE CAJA:</div><div>${formatMoney(cierreCaja)}</div></div>`;
+    html += `<div class="linea" style="flex-direction: column; align-items: flex-end; font-size:12px; margin-top:4px;">`;
+    html += `<div>${formatMoney(cierreCaja)} ÷ ${formatMoney(50000)} = <b>${cierreCajaDividido.toFixed(1)}</b></div>`;
+    html += `</div>`;
 
     document.getElementById('ticketContent').innerHTML = html;
     document.getElementById('reporteCompleto').style.display = 'block';

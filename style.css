@@ -95,37 +95,6 @@ hr {
     margin: 8px 0;
 }
 
-/* Impresión */
-/* @media print {
-    @page {
-        size: 80mm auto;
-        margin: 0;
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
-        background: none;
-    }
-
-    form,
-    button {
-        display: none;
-    }
-
-    .reporte {
-        display: block;
-    }
-
-    .ticket {
-        box-shadow: none;
-        border: none;
-        margin: 0;
-        width: 100%;
-        padding: 8px;
-    }
-} */
-
 /* Impresión optimizada y centrada para impresoras térmicas */
 @media print {
     @page {
