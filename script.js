@@ -123,10 +123,9 @@ function generarReporte() {
     html += `<br><hr><div style="text-align:center; font-weight:bold; margin-bottom:6px;">PROPINA</div><br>`;
     html += `<div class="linea"><div>Fecha:</div><div>${fecha}</div></div><br>`;
     html += `<div class="linea"><div>Propina:</div><div>${formatMoney(propina)}</div></div><br>`;
-    html += `<div class="linea"><div>Repique:</div><div>__________</div></div><hr>`;
+    html += `<div class="linea"><div>Repique:</div><div>__________</div></div> <br> <hr>`;
     html += `<div style="text-align:center; font-size:12px; margin-top:6px;">-- FIN DEL REPORTE --</div>`;
 
-    html += `<div class="linea"><div>Repique:</div><div>__________</div></div> <br> <hr>`;
     //CIERRE DE CAJA
     html += `<br><br><div style="text-align:center; font-weight:bold; font-size:13px;">CIERRE DE CAJA DEL DÍA</div><hr>`;
     html += `<div class="linea"><div>Domicilios:</div><div>${formatMoney(domicilio)}</div></div>`;
