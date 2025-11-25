@@ -54,6 +54,7 @@ function generarReporte() {
     const total = val('total_venta');
     const propina = val('propina');
     const domicilio = val('domicilio');
+    const subtotalComida = val('subtotal_comida');
     const red = [
         val('red1'), val('red2'), val('red3'),
         val('red4'), val('red5'), val('red6')
@@ -78,6 +79,11 @@ function generarReporte() {
     //Cierre de Caja
     const cierreCaja = domicilio + subtotal4 + transfer + cxc + baseCaja;
     const cierreCajaDividido = cierreCaja / 50000;
+
+    // Cálculo INC 8%
+    const baseINC = subtotalComida - domicilio;
+    const INC = baseINC * 0.08;
+
 
     let html = '';
 
@@ -124,6 +130,12 @@ function generarReporte() {
     html += `<div class="linea"><div>Fecha:</div><div>${fecha}</div></div><br>`;
     html += `<div class="linea"><div>Propina:</div><div>${formatMoney(propina)}</div></div><br>`;
     html += `<div class="linea"><div>Repique:</div><div>__________</div></div> <br> <hr>`;
+
+    html += `<br><hr><div style="text-align:center; font-weight:bold;">INC (8%)</div>`;
+    html += `<div class="linea"><div>Subtotal Comida:</div><div>${formatMoney(subtotalComida)}</div></div>`;
+    html += `<div class="linea"><div>Base INC:</div><div>${formatMoney(baseINC)}</div></div>`;
+    html += `<div class="linea bold"><div>INC 8%:</div><div>${formatMoney(INC)}</div></div><hr>`;
+
     html += `<div style="text-align:center; font-size:12px; margin-top:6px;">-- FIN DEL REPORTE --</div>`;
 
     //CIERRE DE CAJA
