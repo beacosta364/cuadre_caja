@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 function generarReporte() {
     const fechaInput = document.getElementById('fecha').value;
     const fecha = formatoFechaInput(fechaInput);
@@ -54,14 +55,10 @@ function generarReporte() {
     const propina = val('propina');
     const domicilio = val('domicilio');
     const subtotalComida = val('subtotal_comida');
-    // 🔴 CAMBIO CLAVE: ordenar y reasignar RED
     const red = [
         val('red1'), val('red2'), val('red3'),
         val('red4'), val('red5'), val('red6')
-    ]
-    .filter(v => v > 0)
-    .sort((a, b) => a - b);
-
+    ];
     const transfer = val('transferencias');
     const cxc = val('cuenta_cobrar');
     const gastos = val('gastos');
@@ -87,6 +84,7 @@ function generarReporte() {
     const baseINC = subtotalComida - domicilio;
     const INC = baseINC * 0.08;
 
+
     let html = '';
 
     html += `<div class="titulo">CUADRE DE CAJA DIARIO</div>`;
@@ -96,10 +94,9 @@ function generarReporte() {
     html += `<div class="linea"><div>Domicilio:</div><div>${formatMoney(domicilio)}</div></div>`;
     html += `<div class="linea bold"><div>VENTA TOTAL DEL DIA:</div><div>${formatMoney(subtotal1)}</div></div><hr>`;
 
-    // 🔴 RED reasignadas
-    red.forEach((valor, i) => {
-        html += `<div class="linea"><div>Red ${i + 1}:</div><div>${formatMoney(valor)}</div></div>`;
-    });
+    for (let i = 0; i < 6; i++) {
+        html += `<div class="linea"><div>Red ${i + 1}:</div><div>${formatMoney(red[i])}</div></div>`;
+    }
 
     html += `<div class="linea"><div>Subtotal:</div><div>${formatMoney(subtotal2)}</div></div><hr>`;
     html += `<div class="linea"><div>Transferencias:</div><div>${formatMoney(transfer)}</div></div>`;
@@ -115,9 +112,9 @@ function generarReporte() {
     html += `<div class="linea bold"><div>Efectivo en caja:</div><div>${formatMoney(verificacion)}</div></div>`;
 
     html += `<br><hr><div style="text-align:center; font-weight:bold; margin-bottom:6px;">DOCUMENTOS</div>`;
-    red.forEach((valor, i) => {
-        html += `<div class="linea"><div>RED ${i + 1}:</div><div>${formatMoney(valor)}</div></div>`;
-    });
+    for (let i = 0; i < 6; i++) {
+        html += `<div class="linea"><div>RED ${i + 1}:</div><div>${formatMoney(red[i])}</div></div>`;
+    }
 
     html += `<div class="linea bold"><div>SUBTOTAL RED:</div><div>${formatMoney(subtotalRed)}</div></div>`;
     html += `<div class="linea"><div>TRANSFERENCIAS:</div><div>${formatMoney(transfer)}</div></div>`;
@@ -152,7 +149,6 @@ function generarReporte() {
     html += `<div class="linea" style="flex-direction: column; align-items: flex-end; font-size:12px; margin-top:4px;">`;
     html += `<div>${formatMoney(cierreCaja)} ÷ ${formatMoney(50000)} = <b>${cierreCajaDividido.toFixed(1)}</b></div>`;
     html += `</div>`;
-    // (el resto queda exactamente igual)
 
     document.getElementById('ticketContent').innerHTML = html;
     document.getElementById('reporteCompleto').style.display = 'block';
